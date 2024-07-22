@@ -1,8 +1,6 @@
 import type { PageServerLoad } from './$types';
 
 import { SECRET_API_TOKEN } from '$env/static/private'
-import { repositories } from './gitCard.svelte';
-import { repsCount } from './gitCard.svelte';
 
 async function sleep(ms: number): Promise<void> {
   return new Promise(
@@ -46,6 +44,7 @@ query {
           }
         }
       }
+    }
 	}
 }
 `;
