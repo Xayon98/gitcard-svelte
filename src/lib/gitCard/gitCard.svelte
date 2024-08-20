@@ -12,7 +12,9 @@
 	export let status = {};
 	export let totalCount = 0;
 	export let repositories: any[] = [];
+
 	let flag = true;
+
 	async function sleep(ms: number): Promise<void> {
 		return new Promise(
 		(resolve) => setTimeout(resolve, ms));
@@ -177,22 +179,6 @@ p {
 
 p:not(:last-child) {
 	margin-bottom: 1.5em;
-}
-
-body {
-	font: 1em/1.618 Inter, sans-serif;
-
-	align-items: center;
-	justify-content: center;
-
-	min-height: 100vh;
-	padding: 30px;
-	margin: 0;
-
-	color: #224;
-	background:
-	url(https://source.unsplash.com/E8Ufcyxz514/2400x1823)
-	center / cover no-repeat fixed;
 }
 
 .card {
