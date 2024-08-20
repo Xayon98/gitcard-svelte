@@ -84,14 +84,15 @@ export const load: PageServerLoad = async () => {
   
     name: data.viewer.name,
     login: data.viewer.login,
-    avatar : data.viewer.avatarUrl,
-    bio : data.viewer.bio,
-    location : data.viewer.location,
-    company : data.viewer.company,
-    email : data.viewer.email,
-    url : data.viewer.url,
-    status : data.viewer.status,
-    repositories : data2.viewer.pinnedItems.nodes,
+    avatar: data.viewer.avatarUrl,
+    bio: data.viewer.bio,
+    location: data.viewer.location,
+    company: data.viewer.company,
+    email: data.viewer.email,
+    url: data.viewer.url,
+    status: data.viewer.status,
+    totalCount: data.viewer.repositories.totalCount,
+    repositories: data2.viewer.pinnedItems.nodes,
   }
 }
 

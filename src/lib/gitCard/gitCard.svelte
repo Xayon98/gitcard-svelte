@@ -9,15 +9,18 @@
 	export let company = "Company";
 	export let email = "Email";
 	export let url = "";
-	export let status = {};
+	export let status = {emojiHTML: "", message: ""};
 	export let totalCount = 0;
 	export let repositories: any[] = [];
+
+	console.log(status);
 
 	let flag = true;
 
 	async function sleep(ms: number): Promise<void> {
 		return new Promise(
 		(resolve) => setTimeout(resolve, ms));
+		
 }
 
 	onMount( async () => {
@@ -28,6 +31,7 @@
 		}
 	   
 	);
+	flag = true;
 
 </script>
 
@@ -37,9 +41,18 @@
 	{#if flag}
 		<div class="basis-1/2">
 			<div class="flex-col space-y-1">
-				<a href={url} class=" w-[150px] h-[150px] block rounded-full">
-					<img src={avatar} alt="Avatar" width="150" height="150" class ="icon"/>
-				</a>
+				<div>
+					<a href={url} class=" w-[150px] h-[150px] block rounded-full">
+						<img src={avatar} alt="Avatar" width="150" height="150" class ="icon"/>
+					</a>
+					{#if (status)}
+						
+				
+					<div class="absolute top-[33%] left-[16%] bg-[#0c1116] border-[#ffffff40] border-[1.5px] rounded-full w-6 h-6 text-center pt-[0.2rem] text-[0.75rem]">
+						{@html status.emojiHTML}
+					</div>
+					{/if}
+				</div>
 				<div class="font-medium text-lg">
 					<a href={url}>{name}</a>
 				</div>
@@ -181,13 +194,15 @@ p:not(:last-child) {
 	margin-bottom: 1.5em;
 }
 
+
+
 .card {
 	display: flex;
 	justify-content: space-between;
 
 	border: 1px solid rgba(255, 255, 255, .25);
 	border-radius: 20px;
-	background-color: rgba(12,17,22,1);
+	background-color: #0c1116;
 	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 
 	backdrop-filter: blur(15px);
