@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import Icon from "@iconify/svelte";
 
 	export let name = "Nom";
 	export let login = "Pseudo";
@@ -13,7 +14,10 @@
 	export let totalCount = 0;
 	export let repositories: any[] = [];
 
-	console.log(status);
+	if (status) {
+		status.emojiHTML = status.emojiHTML.replace('<div>', '');
+		status.emojiHTML = status.emojiHTML.replace('</div>', '');
+	}
 
 	let flag = true;
 
@@ -33,6 +37,26 @@
 	);
 	flag = true;
 
+	function statusOn() {
+		let statusDiv = document.getElementById("status");
+		if (statusDiv) {			
+			let width = statusDiv.scrollWidth+10;
+			statusDiv.style.width = width + "px";
+			console.log(width);
+		}
+
+	}
+
+	function statusOff() {
+		let statusDiv = document.getElementById("status");
+		if (statusDiv) {
+			statusDiv.style.width = "1.5rem";
+			statusDiv.style.paddingLeft = "0.2rem";
+			statusDiv.style.paddingRight = "0.2rem";
+		}
+	}
+
+
 </script>
 
 
@@ -46,10 +70,10 @@
 						<img src={avatar} alt="Avatar" width="150" height="150" class ="icon"/>
 					</a>
 					{#if (status)}
-						
-				
-					<div class="absolute top-1/3 left-[16.66%] bg-[#0c1116] border-[#ffffff40] border-[1.5px] rounded-full w-6 h-6 text-center pt-[0.2rem] text-[0.75rem]">
-						{@html status.emojiHTML}
+					<div id="status" role="tooltip" class="absolute top-[145px] left-[160px] max-w-[15rem] bg-[#0c1116] border-[#ffffff40] border-[1.5px] 
+					rounded-full w-6 h-6 pt-[0.2rem] text-xs items-center overflow-hidden whitespace-nowrap text-clip text-align-left text-left px-[0.2rem] transition-all duration-300 ease-in-out"
+					 on:mouseenter={statusOn} on:mouseleave={statusOff}>
+						{@html status.emojiHTML + " &nbsp;" + status.message}
 					</div>
 					{/if}
 				</div>

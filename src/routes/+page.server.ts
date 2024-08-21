@@ -20,7 +20,7 @@ query {
     email,
     url,
     status {
-      emoji,
+      emojiHTML,
       message
     },
     repositories  {
@@ -50,38 +50,38 @@ query {
 `;
 
 var url = 'https://api.github.com/graphql',
-    options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${SECRET_API_TOKEN}`,
-        },
-        body: JSON.stringify({
-            query: query,
-        })
+  options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${SECRET_API_TOKEN}`,
     },
-    options2 = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${SECRET_API_TOKEN}`,
-      },
-      body: JSON.stringify({
-        query: query2,
-      })
-    };
-    
+    body: JSON.stringify({
+      query: query,
+    })
+  },
+  options2 = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${SECRET_API_TOKEN}`,
+    },
+    body: JSON.stringify({
+      query: query2,
+    })
+  };
+
 
 
 export const load: PageServerLoad = async () => {
-  const data =  (await fetch(url, options).then(res => res.json())).data;
+  const data = (await fetch(url, options).then(res => res.json())).data;
   const data2 = (await fetch(url, options2).then(res => res.json())).data;
-  
 
-	return {
-  
+
+  return {
+
     name: data.viewer.name,
     login: data.viewer.login,
     avatar: data.viewer.avatarUrl,
