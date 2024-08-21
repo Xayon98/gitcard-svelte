@@ -70,8 +70,9 @@
 						<img src={avatar} alt="Avatar" width="150" height="150" class ="icon"/>
 					</a>
 					{#if (status)}
-					<div id="status" role="tooltip" class="absolute top-[145px] left-[160px] max-w-[15rem] bg-[#0c1116] border-[#ffffff40] border-[1.5px] 
-					rounded-full w-6 h-6 pt-[0.2rem] text-xs items-center overflow-hidden whitespace-nowrap text-clip text-align-left text-left px-[0.2rem] transition-all duration-300 ease-in-out"
+					<div id="status" role="tooltip" class="absolute top-[145px] left-[160px] max-w-[15rem] bg-[#0c1116]
+					border-[#ffffff40] border-[1.5px] rounded-full w-6 h-6 pt-[0.2rem] text-xs items-center overflow-hidden
+					whitespace-nowrap text-clip text-align-left text-left px-[0.2rem] shadow-md transition-all duration-300 ease-in-out"
 					 on:mouseenter={statusOn} on:mouseleave={statusOff}>
 						{@html status.emojiHTML + " &nbsp;" + status.message}
 					</div>
