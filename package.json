@@ -1,0 +1,23 @@
+{
+  "name": "gitcard-svelte",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.1",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/svelte": "^4.0.5",
+    "@testing-library/user-event": "^14.5.1",
+    "jsdom": "^23.0.1",
+    "sass-embedded": "^1.92.1",
+    "svelte": "^4.2.8",
+    "vite": "^5.0.8",
+    "vitest": "^1.0.4"
+  },
+  "dependencies": {
+    "@iconify/svelte": "*"
+  }
+}
